@@ -83,18 +83,18 @@ Data sourced from Yahoo Finance (yfinance). Time period: 2017–2025.
 | File | Description |
 |---|---|
 | `output/backtest_plots.png` | Cumulative return, drawdown, ROC AUC, feature importance |
-| `output/features.csv` | Engineered features (1571 rows × 6 cols) |
-| `output/metrics.csv` | Portfolio performance summary |
-| `output/model_classification_metrics.csv` | Static split model comparison |
+| `output/features.csv` | Engineered features (4630 rows, 7 cols: Date, Ticker, Ret_W1, Ret_W2, Ret_W4, Vol_4W, Target) |
+| `output/metrics.csv` | Portfolio performance summary (7 metrics) |
+| `output/model_classification_metrics.csv` | Static split model comparison (4 models) |
 | `output/portfolio_returns.csv` | Portfolio returns before/after costs (156 weeks) |
-| `output/predictions_with_probs.csv` | Weekly predictions with probabilities (1571 rows) |
-| `output/selected_stocks.csv` | Selected stocks per week (156 weeks) |
-| `output/test_data.csv` | Test set (2023–2025) |
-| `output/train_data.csv` | Training set (2017–2022) |
-| `output/walk_forward_roc_auc.csv` | Walk-forward ROC AUC (140 weeks) |
-| `output/weekly_prices.csv` | Weekly adjusted close prices |
-| `output/weekly_returns.csv` | Weekly returns |
-| `output/weekly_stock_predictions_ensemble.csv` | Predictions with selection & weights |
+| `output/predictions_with_probs.csv` | Weekly predictions with probabilities (1570 rows) |
+| `output/selected_stocks.csv` | Selected stocks per week (157 weeks) |
+| `output/test_data.csv` | Test set 2023–2025 (1570 rows) |
+| `output/train_data.csv` | Training set 2017–2022 (3060 rows) |
+| `output/walk_forward_roc_auc.csv` | Walk-forward ROC AUC per week (157 weeks, 140 non-null) |
+| `output/weekly_prices.csv` | Weekly adjusted close prices (470 weeks) |
+| `output/weekly_returns.csv` | Weekly returns (470 weeks) |
+| `output/weekly_stock_predictions_ensemble.csv` | Predictions with selection & weights (1570 rows) |
 
 ## Requirements
 
