@@ -37,27 +37,54 @@ Data sourced from Yahoo Finance (yfinance). Time period: 2017–2025.
 
 ## Results
 
-Performance metrics are reported before and after transaction costs:
+### Model Classification (Static Split 2017–2022 train / 2023–2025 test)
 
-- Cumulative return
-- Annualized return
-- Annualized volatility
-- Sharpe ratio
-- Max drawdown
-- Hit rate
-- Average weekly return
+| Model | Accuracy | Precision | Recall | F1 Score | ROC AUC |
+|---|---|---|---|---|---|
+| Logistic Regression | 51.46% | 56.34% | 66.03% | 0.6080 | 0.4753 |
+| Random Forest | 53.18% | 57.84% | 65.92% | 0.6162 | 0.5031 |
+| XGBoost | 52.36% | 57.39% | 63.80% | 0.6042 | 0.5124 |
+| **Ensemble (Voting)** | **53.31%** | **57.76%** | **67.37%** | **0.6220** | **0.5063** |
+
+### Walk-Forward ROC AUC
+
+- Mean ROC AUC across 140 weekly predictions: **0.5192**
+- Range: 0.0 – 1.0
+- Outperforms random (0.5) on average
+
+### Portfolio Performance (2023–2025)
+
+| Metric | Before Costs | After Costs |
+|---|---|---|
+| Cumulative Return | **+126.86%** | **+77.06%** |
+| Annualized Return | 31.40% | 20.98% |
+| Annualized Volatility | 25.08% | 25.05% |
+| Sharpe Ratio | **1.25** | **0.84** |
+| Max Drawdown | –18.61% | –19.68% |
+| Hit Rate | 56.41% | 55.13% |
+| Average Weekly Return | 0.59% | 0.43% |
+
+### Selected Stocks (first 5 weeks)
+
+| Date | Stock 1 | Stock 2 |
+|---|---|---|
+| 2023-01-06 | META | V |
+| 2023-01-13 | JNJ | AMZN |
+| 2023-01-20 | AMZN | GOOGL |
+| 2023-01-27 | AMZN | V |
+| 2023-02-03 | TSLA | V |
 
 ## Deliverables
 
 - [`main.py`](main.py) – Full implementation (data, features, modeling, backtest, plots)
-- `output/features.csv` – Engineered features
+- `output/features.csv` – Engineered features (1571 rows × 6 cols)
 - `output/model_classification_metrics.csv` – Static split model comparison
-- `output/walk_forward_roc_auc.csv` – Walk-forward ROC AUC per week
-- `output/predictions_with_probs.csv` – Weekly predictions with probabilities
-- `output/selected_stocks.csv` – Selected stocks per week
+- `output/walk_forward_roc_auc.csv` – Walk-forward ROC AUC (140 weeks)
+- `output/predictions_with_probs.csv` – Weekly predictions with probabilities (1571 rows)
+- `output/selected_stocks.csv` – Selected stocks per week (156 weeks)
 - `output/weekly_stock_predictions_ensemble.csv` – Predictions with selection & weights
-- `output/portfolio_returns.csv` – Portfolio returns before/after costs
-- `output/metrics.csv` – Performance metrics
+- `output/portfolio_returns.csv` – Portfolio returns before/after costs (156 weeks)
+- `output/metrics.csv` – Performance metrics summary
 - `output/backtest_plots.png` – Cumulative return, drawdown, ROC AUC, feature importance
 
 ## Requirements
